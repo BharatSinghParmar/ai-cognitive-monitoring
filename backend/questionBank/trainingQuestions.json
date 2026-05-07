@@ -1,0 +1,690 @@
+[
+    {
+        "id": "q1",
+        "topic": "Logic",
+        "principle": "Deductive Reasoning",
+        "difficulty": 1,
+        "question": "If all roses are flowers and some flowers fade quickly, can we conclude that all roses fade quickly?",
+        "options": [
+            "Yes",
+            "No",
+            "Cannot be determined"
+        ],
+        "answer": "No"
+    },
+    {
+        "id": "q2",
+        "topic": "Memory",
+        "principle": "Pattern Recognition",
+        "difficulty": 1,
+        "question": "What is the next number in the sequence: 2, 4, 8, 16, ...?",
+        "options": [
+            "20",
+            "24",
+            "32",
+            "64"
+        ],
+        "answer": "32"
+    },
+    {
+        "id": "q3",
+        "topic": "Attention",
+        "principle": "Selective Focus",
+        "difficulty": 2,
+        "question": "In the phrase 'The quick brown fox jumps over the lazy dog', which letter is most frequent?",
+        "options": [
+            "o",
+            "e",
+            "t",
+            "u"
+        ],
+        "answer": "o"
+    },
+    {
+        "id": "q4",
+        "topic": "Logic",
+        "principle": "Syllogism",
+        "difficulty": 2,
+        "question": "All A are B. All B are C. Therefore, all A are C.",
+        "options": [
+            "True",
+            "False"
+        ],
+        "answer": "True"
+    },
+    {
+        "id": "q5",
+        "topic": "Processing Speed",
+        "principle": "Rapid Calculation",
+        "difficulty": 1,
+        "question": "What is 15% of 200?",
+        "options": [
+            "20",
+            "25",
+            "30",
+            "35"
+        ],
+        "answer": "30"
+    },
+    {
+        "id": "q6",
+        "topic": "Reasoning",
+        "principle": "Analogical Thinking",
+        "difficulty": 3,
+        "question": "Feather is to Bird as Scale is to...?",
+        "options": [
+            "Snake",
+            "Fish",
+            "Lizard",
+            "All of the above"
+        ],
+        "answer": "All of the above"
+    },
+    {
+        "id": "q7",
+        "topic": "Logic",
+        "principle": "Venn Diagrams",
+        "difficulty": 3,
+        "question": "If some students are athletes and all athletes are healthy, which of these must be true?",
+        "options": [
+            "All students are healthy",
+            "Some students are healthy",
+            "No students are healthy"
+        ],
+        "answer": "Some students are healthy"
+    },
+    {
+        "id": "q8",
+        "topic": "Memory",
+        "principle": "Working Memory",
+        "difficulty": 2,
+        "question": "Which of these words was NOT in this list: Apple, Chair, Phone, Water?",
+        "options": [
+            "Apple",
+            "Bike",
+            "Chair",
+            "Water"
+        ],
+        "answer": "Bike"
+    },
+    {
+        "id": "q9",
+        "topic": "Attention",
+        "principle": "Sustained Attention",
+        "difficulty": 4,
+        "question": "Carefully count the number of 'f's in this sentence: 'Finished files are the result of years of scientific study combined with the experience of years.'",
+        "options": [
+            "3",
+            "4",
+            "5",
+            "6"
+        ],
+        "answer": "6"
+    },
+    {
+        "id": "q10",
+        "topic": "Processing Speed",
+        "principle": "Mental Rotation",
+        "difficulty": 5,
+        "question": "If you rotate a 'p' 180 degrees, it becomes...?",
+        "options": [
+            "b",
+            "d",
+            "q",
+            "p"
+        ],
+        "answer": "d"
+    },
+    {
+        "id": "q11",
+        "topic": "Core",
+        "principle": "Focus",
+        "difficulty": 1,
+        "question": "Which word is exactly the same as 'PRECISION'?",
+        "options": [
+            "PRECSION",
+            "PRECISION",
+            "PRECISSON",
+            "PRECIZION"
+        ],
+        "answer": "PRECISION"
+    },
+    {
+        "id": "q12",
+        "topic": "Logic",
+        "principle": "Inference",
+        "difficulty": 2,
+        "question": "John is taller than Sam. Sam is taller than Pete. Who is the shortest?",
+        "options": [
+            "John",
+            "Sam",
+            "Pete",
+            "Cannot tell"
+        ],
+        "answer": "Pete"
+    },
+    {
+        "id": "q13",
+        "topic": "Math",
+        "principle": "Arithmetic",
+        "difficulty": 3,
+        "question": "If a dozen eggs cost $2.40, how much does one egg cost?",
+        "options": [
+            "$0.15",
+            "$0.20",
+            "$0.25",
+            "$0.30"
+        ],
+        "answer": "$0.20"
+    },
+    {
+        "id": "q14",
+        "topic": "Logic",
+        "principle": "Conditionals",
+        "difficulty": 4,
+        "question": "If it rains, the grass gets wet. The grass is dry. Therefore...?",
+        "options": [
+            "It rained",
+            "It did not rain",
+            "It might rain",
+            "Nothing"
+        ],
+        "answer": "It did not rain"
+    },
+    {
+        "id": "q15",
+        "topic": "Verbal",
+        "principle": "Antonyms",
+        "difficulty": 2,
+        "question": "What is the opposite of 'Meticulous'?",
+        "options": [
+            "Careful",
+            "Sloppy",
+            "Detailed",
+            "Fast"
+        ],
+        "answer": "Sloppy"
+    },
+    {
+        "id": "q16",
+        "topic": "Attention",
+        "principle": "Visual Search",
+        "difficulty": 3,
+        "question": "How many '8's are there in: 8808088008808?",
+        "options": [
+            "6",
+            "7",
+            "8",
+            "9"
+        ],
+        "answer": "8"
+    },
+    {
+        "id": "q17",
+        "topic": "Logic",
+        "principle": "Probability",
+        "difficulty": 5,
+        "question": "You flip a coin 3 times. What is the probability of getting all heads?",
+        "options": [
+            "1/2",
+            "1/4",
+            "1/8",
+            "1/6"
+        ],
+        "answer": "1/8"
+    },
+    {
+        "id": "q18",
+        "topic": "Memory",
+        "principle": "Spatial Memory",
+        "difficulty": 2,
+        "question": "If you move North, then East, then South, which direction are you from your start?",
+        "options": [
+            "North",
+            "South",
+            "East",
+            "West"
+        ],
+        "answer": "East"
+    },
+    {
+        "id": "q19",
+        "topic": "Math",
+        "principle": "Estimation",
+        "difficulty": 3,
+        "question": "Approximately how many seconds are in 2 hours?",
+        "options": [
+            "120",
+            "3600",
+            "7200",
+            "10000"
+        ],
+        "answer": "7200"
+    },
+    {
+        "id": "q20",
+        "topic": "Verbal",
+        "principle": "Synonyms",
+        "difficulty": 1,
+        "question": "A synonym for 'Enormous' is...?",
+        "options": [
+            "Tiny",
+            "Huge",
+            "Soft",
+            "Blue"
+        ],
+        "answer": "Huge"
+    },
+    {
+        "id": "q21",
+        "topic": "Logic",
+        "principle": "Deduction",
+        "difficulty": 4,
+        "question": "Monday is the 1st of the month. What day is the 10th?",
+        "options": [
+            "Tuesday",
+            "Wednesday",
+            "Thursday",
+            "Friday"
+        ],
+        "answer": "Wednesday"
+    },
+    {
+        "id": "q22",
+        "topic": "Reasoning",
+        "principle": "Classification",
+        "difficulty": 2,
+        "question": "Which of these does NOT belong?",
+        "options": [
+            "Apple",
+            "Orange",
+            "Carrot",
+            "Banana"
+        ],
+        "answer": "Carrot"
+    },
+    {
+        "id": "q23",
+        "topic": "Processing",
+        "principle": "Symbolic Logic",
+        "difficulty": 3,
+        "question": "If A=1 and B=2, what is A+B+A?",
+        "options": [
+            "3",
+            "4",
+            "5",
+            "6"
+        ],
+        "answer": "4"
+    },
+    {
+        "id": "q24",
+        "topic": "Memory",
+        "principle": "Association",
+        "difficulty": 1,
+        "question": "Table is to Wood as Window is to...?",
+        "options": [
+            "Frame",
+            "Glass",
+            "Curtain",
+            "Wall"
+        ],
+        "answer": "Glass"
+    },
+    {
+        "id": "q25",
+        "topic": "Attention",
+        "principle": "Filtering",
+        "difficulty": 4,
+        "question": "Find the odd one out: pppppqppppp",
+        "options": [
+            "p",
+            "q"
+        ],
+        "answer": "q"
+    },
+    {
+        "id": "q26",
+        "topic": "Logic",
+        "principle": "Causality",
+        "difficulty": 2,
+        "question": "If you heat ice, it melts. You have a puddle. Does that mean you heated ice?",
+        "options": [
+            "Yes",
+            "No",
+            "Not necessarily"
+        ],
+        "answer": "Not necessarily"
+    },
+    {
+        "id": "q27",
+        "topic": "Math",
+        "principle": "Series",
+        "difficulty": 3,
+        "question": "What is next: 1, 1, 2, 3, 5, 8, ...?",
+        "options": [
+            "10",
+            "11",
+            "12",
+            "13"
+        ],
+        "answer": "13"
+    },
+    {
+        "id": "q28",
+        "topic": "Verbal",
+        "principle": "Analogies",
+        "difficulty": 2,
+        "question": "Book is to Read as Song is to...?",
+        "options": [
+            "Play",
+            "Sing",
+            "Listen",
+            "Dance"
+        ],
+        "answer": "Listen"
+    },
+    {
+        "id": "q29",
+        "topic": "Attention",
+        "principle": "Detail",
+        "difficulty": 3,
+        "question": "Which of these is the correct spelling?",
+        "options": [
+            "Accommodate",
+            "Acomodate",
+            "Accomodate",
+            "Acommodate"
+        ],
+        "answer": "Accommodate"
+    },
+    {
+        "id": "q30",
+        "topic": "Reasoning",
+        "principle": "Abstraction",
+        "difficulty": 5,
+        "question": "If X is the father of Y, but Y is not the son of X, what is Y to X?",
+        "options": [
+            "Daughter",
+            "Mother",
+            "Sister",
+            "No relation"
+        ],
+        "answer": "Daughter"
+    },
+    {
+        "id": "q31",
+        "topic": "Math",
+        "principle": "Basic Geometry",
+        "difficulty": 1,
+        "question": "How many sides does a hexagon have?",
+        "options": [
+            "5",
+            "6",
+            "7",
+            "8"
+        ],
+        "answer": "6"
+    },
+    {
+        "id": "q32",
+        "topic": "Logic",
+        "principle": "Truth Tables",
+        "difficulty": 4,
+        "question": "P OR (NOT P) is always...?",
+        "options": [
+            "True",
+            "False",
+            "Depends on P"
+        ],
+        "answer": "True"
+    },
+    {
+        "id": "q33",
+        "topic": "Memory",
+        "principle": "Chunking",
+        "difficulty": 2,
+        "question": "Remember these numbers: 4, 8, 15. What was the middle number?",
+        "options": [
+            "4",
+            "8",
+            "15",
+            "16"
+        ],
+        "answer": "8"
+    },
+    {
+        "id": "q34",
+        "topic": "Verbal",
+        "principle": "Vocabulary",
+        "difficulty": 3,
+        "question": "What does 'Ephemeral' mean?",
+        "options": [
+            "Permanent",
+            "Short-lived",
+            "Shiny",
+            "Angry"
+        ],
+        "answer": "Short-lived"
+    },
+    {
+        "id": "q35",
+        "topic": "Attention",
+        "principle": "Visual Focus",
+        "difficulty": 4,
+        "question": "Spot the difference: 12345678, 12345978. Which position changed?",
+        "options": [
+            "4th",
+            "5th",
+            "6th",
+            "7th"
+        ],
+        "answer": "6th"
+    },
+    {
+        "id": "q36",
+        "topic": "Math",
+        "principle": "Fractions",
+        "difficulty": 2,
+        "question": "What is 1/2 + 1/4?",
+        "options": [
+            "2/6",
+            "3/4",
+            "1/6",
+            "1/4"
+        ],
+        "answer": "3/4"
+    },
+    {
+        "id": "q37",
+        "topic": "Logic",
+        "principle": "Lateral Thinking",
+        "difficulty": 5,
+        "question": "What has keys but can't open locks?",
+        "options": [
+            "Piano",
+            "Door",
+            "Map",
+            "Chest"
+        ],
+        "answer": "Piano"
+    },
+    {
+        "id": "q38",
+        "topic": "Reasoning",
+        "principle": "Cause/Effect",
+        "difficulty": 1,
+        "question": "If you drop a glass, it breaks. The glass is broken. Did it drop?",
+        "options": [
+            "Yes",
+            "No",
+            "Maybe"
+        ],
+        "answer": "Maybe"
+    },
+    {
+        "id": "q39",
+        "topic": "Memory",
+        "principle": "Context",
+        "difficulty": 2,
+        "question": "If a red house is made of red bricks, and a blue house is made of blue bricks, what is a greenhouse made of?",
+        "options": [
+            "Green bricks",
+            "Plants",
+            "Glass",
+            "Wood"
+        ],
+        "answer": "Glass"
+    },
+    {
+        "id": "q40",
+        "topic": "Verbal",
+        "principle": "Roots",
+        "difficulty": 3,
+        "question": "What does the prefix 'Bio' mean?",
+        "options": [
+            "Metal",
+            "Life",
+            "Earth",
+            "Space"
+        ],
+        "answer": "Life"
+    },
+    {
+        "id": "q41",
+        "topic": "Attention",
+        "principle": "Counting",
+        "difficulty": 1,
+        "question": "How many vowels in 'COGNITIVE'?",
+        "options": [
+            "3",
+            "4",
+            "5",
+            "6"
+        ],
+        "answer": "4"
+    },
+    {
+        "id": "q42",
+        "topic": "Logic",
+        "principle": "Ordering",
+        "difficulty": 2,
+        "question": "A is before B. C is after B. Is A before C?",
+        "options": [
+            "Yes",
+            "No",
+            "Cannot be determined"
+        ],
+        "answer": "Yes"
+    },
+    {
+        "id": "q43",
+        "topic": "Math",
+        "principle": "Algebra",
+        "difficulty": 4,
+        "question": "If 2x + 4 = 10, what is x?",
+        "options": [
+            "2",
+            "3",
+            "4",
+            "5"
+        ],
+        "answer": "3"
+    },
+    {
+        "id": "q44",
+        "topic": "Processing",
+        "principle": "Visual Recognition",
+        "difficulty": 3,
+        "question": "Which letter is the mirror of 'E'?",
+        "options": [
+            "F",
+            "3",
+            "M",
+            "W"
+        ],
+        "answer": "3"
+    },
+    {
+        "id": "q45",
+        "topic": "Memory",
+        "principle": "Spatial Orientation",
+        "difficulty": 5,
+        "question": "If you are facing North and turn 270 degrees clockwise, which way are you facing?",
+        "options": [
+            "East",
+            "West",
+            "South",
+            "North"
+        ],
+        "answer": "West"
+    },
+    {
+        "id": "q46",
+        "topic": "Verbal",
+        "principle": "Idioms",
+        "difficulty": 2,
+        "question": "What does 'Break a leg' mean in theatre?",
+        "options": [
+            "Actually break a leg",
+            "Good luck",
+            "Quit",
+            "Run fast"
+        ],
+        "answer": "Good luck"
+    },
+    {
+        "id": "q47",
+        "topic": "Reasoning",
+        "principle": "Categorization",
+        "difficulty": 1,
+        "question": "Which is an animal?",
+        "options": [
+            "Rose",
+            "Eagle",
+            "Oak",
+            "Pine"
+        ],
+        "answer": "Eagle"
+    },
+    {
+        "id": "q48",
+        "topic": "Logic",
+        "principle": "Non-contradiction",
+        "difficulty": 3,
+        "question": "Can a statement be both true and false at the same time in the same sense?",
+        "options": [
+            "Yes",
+            "No"
+        ],
+        "answer": "No"
+    },
+    {
+        "id": "q49",
+        "topic": "Attention",
+        "principle": "Precision",
+        "difficulty": 4,
+        "question": "How many 'm's are in 'accommodation'?",
+        "options": [
+            "1",
+            "2",
+            "3",
+            "4"
+        ],
+        "answer": "2"
+    },
+    {
+        "id": "q50",
+        "topic": "Math",
+        "principle": "Exponents",
+        "difficulty": 5,
+        "question": "What is 2 to the power of 5?",
+        "options": [
+            "16",
+            "32",
+            "64",
+            "128"
+        ],
+        "answer": "32"
+    }
+]

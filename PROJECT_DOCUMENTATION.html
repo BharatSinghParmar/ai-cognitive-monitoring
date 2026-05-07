@@ -1,0 +1,763 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI-Based Cognitive Monitoring – Final Year Project Report</title>
+<!-- MathJax for rendering math equations -->
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Merriweather:wght@300;400;700&family=Fira+Code:wght@400;500&display=swap');
+
+  :root {
+    --primary: #4f46e5;
+    --primary-light: #e0e7ff;
+    --text-main: #1f2937;
+    --text-muted: #4b5563;
+    --bg-page: #ffffff;
+    --bg-alt: #f9fafb;
+    --border: #e5e7eb;
+    --code-bg: #1e1e2e;
+    --code-color: #cdd6f4;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Merriweather', serif; /* Academic serif font for body */
+    background: var(--bg-page);
+    color: var(--text-main);
+    line-height: 1.8;
+    padding: 0;
+    font-size: 11pt;
+  }
+
+  .container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 40px 60px;
+  }
+
+  /* ── Typography & Headings ── */
+  h1, h2, h3, h4, h5 {
+    font-family: 'Inter', sans-serif;
+    color: var(--text-main);
+    margin-bottom: 15px;
+    line-height: 1.3;
+  }
+
+  h1 { font-size: 2.5rem; font-weight: 800; color: var(--primary); text-align: center; }
+  h2.section-title {
+    font-size: 1.8rem;
+    color: var(--primary);
+    margin-top: 60px;
+    padding-bottom: 5px;
+    border-bottom: 2px solid var(--primary);
+    page-break-after: avoid;
+  }
+  h3.subsection {
+    font-size: 1.4rem;
+    margin-top: 40px;
+    color: #111827;
+    padding-left: 10px;
+    border-left: 4px solid var(--primary);
+    page-break-after: avoid;
+  }
+  h4 { font-size: 1.2rem; margin-top: 25px; }
+
+  p { margin-bottom: 16px; text-align: justify; }
+  ul, ol { margin: 10px 0 20px 40px; }
+  li { margin-bottom: 8px; }
+
+  strong { font-weight: 700; font-family: 'Inter', sans-serif; }
+
+  /* ── Cover Page ── */
+  .cover-page {
+    page-break-after: always;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    text-align: center;
+    padding: 60px;
+  }
+  .cover-header { margin-bottom: 50px; }
+  .cover-title { font-size: 3.2rem; font-weight: 800; color: var(--primary); line-height: 1.2; margin-bottom: 20px;}
+  .cover-subtitle { font-size: 1.5rem; font-family: 'Inter', sans-serif; font-weight: 500; color: var(--text-muted); }
+  .cover-meta { margin-top: 80px; font-family: 'Inter', sans-serif; text-align: center; font-size: 1.1rem; }
+  .cover-meta p { text-align: center; margin-bottom: 10px;}
+  .report-label {
+    display: inline-block;
+    background: var(--primary);
+    color: #fff;
+    padding: 10px 25px;
+    border-radius: 5px;
+    font-weight: 700;
+    font-size: 1.1rem;
+    margin: 30px 0;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+  }
+
+  /* ── Table of Contents ── */
+  .toc {
+    page-break-after: always;
+    padding: 40px 0;
+    font-family: 'Inter', sans-serif;
+  }
+  .toc h2 { text-align: center; border: none; margin-bottom: 40px; }
+  .toc-list, .toc-sublist { list-style: none; margin: 0; padding: 0; }
+  .toc-list > li { margin-bottom: 12px; font-size: 1.1rem; font-weight: 600; }
+  .toc-sublist { margin-top: 8px; margin-left: 20px; font-weight: 400; font-size: 1rem; }
+  .toc-sublist > li { margin-bottom: 6px; color: var(--text-muted); }
+  .toc a { text-decoration: none; color: inherit; }
+  .toc a:hover { color: var(--primary); text-decoration: underline; }
+
+  /* ── Math & Equations ── */
+  .equation {
+    display: block;
+    background: var(--bg-alt);
+    padding: 15px;
+    margin: 20px 0;
+    border-radius: 8px;
+    text-align: center;
+    border: 1px solid var(--border);
+    font-size: 1.1rem;
+  }
+  .equation-caption {
+    text-align: center;
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    font-style: italic;
+    margin-top: -10px;
+    margin-bottom: 20px;
+    font-family: 'Inter', sans-serif;
+  }
+
+  /* ── Figures & Blocks ── */
+  .figure {
+    background: #1e1e2e;
+    color: #89b4fa;
+    padding: 25px;
+    border-radius: 8px;
+    font-family: 'Fira Code', monospace;
+    font-size: 0.85rem;
+    line-height: 1.5;
+    overflow-x: auto;
+    margin: 25px 0 10px 0;
+    white-space: pre;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  }
+  .figure-caption {
+    text-align: center;
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    font-style: italic;
+    margin-bottom: 25px;
+    font-family: 'Inter', sans-serif;
+  }
+
+  /* ── Code blocks ── */
+  pre.source-code {
+    background: var(--code-bg);
+    color: var(--code-color);
+    padding: 20px;
+    border-radius: 8px;
+    overflow-x: auto;
+    font-family: 'Fira Code', monospace;
+    font-size: 0.8rem;
+    line-height: 1.5;
+    margin: 10px 0 25px;
+    border: 1px solid #313244;
+  }
+  .file-name {
+    display: inline-block;
+    background: var(--primary-light);
+    color: var(--primary);
+    padding: 6px 12px;
+    border-radius: 6px 6px 0 0;
+    font-family: 'Fira Code', monospace;
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin-bottom: -10px;
+    position: relative;
+    z-index: 10;
+  }
+
+  /* ── Tables ── */
+  table { width: 100%; border-collapse: collapse; margin: 25px 0; font-family: 'Inter', sans-serif; font-size: 0.95rem; }
+  th { background: var(--primary); color: #fff; padding: 12px 15px; text-align: left; }
+  td { padding: 10px 15px; border-bottom: 1px solid var(--border); vertical-align: top; }
+  tr:nth-child(even) td { background: var(--bg-alt); }
+
+  /* ── Callouts ── */
+  .callout {
+    padding: 20px;
+    margin: 25px 0;
+    border-left: 5px solid var(--primary);
+    background: var(--primary-light);
+    border-radius: 0 8px 8px 0;
+  }
+  .callout h4 { margin-top: 0; color: var(--primary); }
+
+  /* ── Print styles ── */
+  @media print {
+    body { background: #fff; font-size: 10pt; }
+    .container { padding: 0; max-width: 100%; }
+    .cover-page { justify-content: center; align-items: center; }
+    h2.section-title { page-break-before: always; }
+    .no-break { page-break-inside: avoid; }
+    pre.source-code { padding: 10px; font-size: 8pt; word-break: break-all; white-space: pre-wrap;}
+    .print-btn { display: none; }
+  }
+
+  .print-btn {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background: var(--primary);
+    color: #fff;
+    border: none;
+    padding: 15px 30px;
+    border-radius: 50px;
+    font-size: 1rem;
+    font-weight: 700;
+    font-family: 'Inter', sans-serif;
+    cursor: pointer;
+    box-shadow: 0 10px 25px rgba(79, 70, 229, 0.4);
+    z-index: 1000;
+    transition: all 0.2s;
+  }
+  .print-btn:hover { transform: translateY(-3px); box-shadow: 0 15px 35px rgba(79, 70, 229, 0.5); }
+</style>
+</head>
+<body>
+
+<button class="print-btn" onclick="window.print()">🖨️ Save as PDF / Print</button>
+
+<div class="container">
+
+  <!-- ==========================================
+       COVER PAGE
+       ========================================== -->
+  <div class="cover-page">
+    <div class="cover-header">
+      <h1 class="cover-title">AI-Based Cognitive Monitoring &amp;<br>Proctored Examination Portal</h1>
+      <p class="cover-subtitle">A Comprehensive Machine Learning and MERN Stack Solution for Secure Remote Assessments</p>
+    </div>
+    
+    <div class="report-label">Final Year Project Report</div>
+    
+    <div class="cover-meta">
+      <p><strong>Comprehensive Documentation</strong></p>
+      <p>Theory, Architecture, Mathematics, Algorithms, and Source Code</p>
+      <br><br>
+      <p><em>Generated automatically via AI-Assisted Documentation Tool</em></p>
+      <p>Date: April 2026</p>
+    </div>
+  </div>
+
+  <!-- ==========================================
+       ABSTRACT
+       ========================================== -->
+  <h2 class="section-title no-break" style="page-break-before: auto;">Abstract</h2>
+  <p>The rapid shift towards decentralized and remote digital education has necessitated the development of robust, scalable, and automated proctoring solutions. Traditional remote proctoring relies heavily on human invigilators (Live Online Proctoring), which is notoriously resource-intensive, highly prone to fatigue-induced errors, and constrained by logistical scalability limits. This project introduces the <strong>AI-Based Cognitive Monitoring & Proctored Examination Portal</strong>, an advanced full-stack platform leveraging computer vision, audio frequency analysis, and kinetic telemetry to ensure comprehensive exam integrity.</p>
+  
+  <p>Beyond rudimentary cheat-detection (such as tab-switching or face matching), this system pioneers a novel <strong>Cognitive Load Monitoring Framework</strong>. This framework continuously evaluates physiological proxies for stress—specifically visual indicators (Eye Aspect Ratio and asymmetry), acoustic cues (amplitude/frequency energy), and kinetic dynamics (keystroke latency variance). By fusing these multi-modal signals, the system constructs a real-time "Cognitive State," identifying abnormal stress spikes that heavily correlate with academic dishonesty or high cognitive strain.</p>
+
+  <p>Built upon the modern <strong>MERN software stack</strong> (MongoDB, Express.js, React.js, Node.js) and deeply integrated with deep learning convolution models (via <code>face-api.js</code>) and Natural Language Processing (NLP) text-similarity string metrics, the platform provides secure biometric authentication, deterministic automated assessment grading, and adaptive cognitive training arenas. This report comprehensively details the mathematical theorems, architectural implementations, system workflows, and entire source code comprising the project.</p>
+
+  <!-- ==========================================
+       TABLE OF CONTENTS
+       ========================================== -->
+  <div class="toc">
+    <h2>Table of Contents</h2>
+    <ol class="toc-list">
+      <li><a href="#ch1">1. Introduction & Background</a>
+        <ol class="toc-sublist">
+          <li>1.1 Background & Problem Statement</li>
+          <li>1.2 Objectives</li>
+          <li>1.3 Scope of the Project</li>
+        </ol>
+      </li>
+      <li><a href="#ch2">2. Theoretical Framework & Core Concepts</a>
+        <ol class="toc-sublist">
+          <li>2.1 Biometric Authentication & Computer Vision</li>
+          <li>2.2 Cognitive Load Theory & Stress Telemetry</li>
+          <li>2.3 Natural Language Processing (NLP) in Grading</li>
+          <li>2.4 Integrity Scoring Algorithm Validation</li>
+          <li>2.5 Item Response Theory (IRT) in Adaptive Training</li>
+        </ol>
+      </li>
+      <li><a href="#ch3">3. System Architecture & Design</a>
+        <ol class="toc-sublist">
+          <li>3.1 Top-Level Architecture Structure</li>
+          <li>3.2 Technology Stack Rationale (MERN)</li>
+        </ol>
+      </li>
+      <li><a href="#ch4">4. Application Workflows & System Processes</a>
+        <ol class="toc-sublist">
+          <li>4.1 Authentication Pipeline Workflow</li>
+          <li>4.2 Automated AI Proctoring Workflow</li>
+          <li>4.3 Analytics & Intelligence Generation</li>
+        </ol>
+      </li>
+      <li><a href="#ch5">5. Database Schema & Data Modeling</a>
+        <ol class="toc-sublist">
+          <li>5.1 Entity Relationship Strategy</li>
+          <li>5.2 MongoDB Mongoose Schemas (Code)</li>
+        </ol>
+      </li>
+      <li><a href="#ch6">6. Backend Implementation & APIs</a>
+        <ol class="toc-sublist">
+          <li>6.1 Controllers and Routers</li>
+          <li>6.2 Micro-service Utility Libraries</li>
+        </ol>
+      </li>
+      <li><a href="#ch7">7. Frontend Implementation & UI Components</a>
+        <ol class="toc-sublist">
+          <li>7.1 React Component Hierarchy</li>
+          <li>7.2 Real-time Dashboards and Sensor Arrays</li>
+        </ol>
+      </li>
+      <li><a href="#ch8">8. Project Setup & Execution Guide</a></li>
+      <li><a href="#ch9">9. Conclusion & Future Scope</a></li>
+    </ol>
+  </div>
+
+  <!-- ==========================================
+       1. INTRODUCTION
+       ========================================== -->
+  <h2 id="ch1" class="section-title">1. Introduction & Background</h2>
+  
+  <h3 class="subsection">1.1 Background & Problem Statement</h3>
+  <p>In the contemporary educational and corporate landscape, remote assessments have become the standard methodology for knowledge verification globally. While Learning Management Systems (LMS) have evolved significantly to distribute and collect examinations, maintaining academic integrity in an unmonitored environment remains a profound challenge.</p>
+  <p>The core problem extends beyond simple impersonation or "tab-switching." Sophisticated circumvention often bypasses passive locks. A secondary, less addressed problem in modern pedagogy is the psychological impact of assessments. Standard exam systems fail to assess <em>how</em> a student answers a question—measuring only the output, not the cognitive journey, fatigue, or stress incurred. Thus, an ideal system must not only catch cheating but also understand the student's cognitive state.</p>
+
+  <h3 class="subsection">1.2 Objectives</h3>
+  <ul>
+    <li>To develop a secure architecture utilizing zero-trust principles via <strong>Biometric Facial Authentication</strong>, mapping user geometry into deep vector spaces.</li>
+    <li>To design and implement a <strong>Multi-layer Proctoring Engine</strong> running natively in the client browser, mitigating server processing load via Edge AI (TensorFlow.js).</li>
+    <li>To formulate a <strong>Cognitive Load Model</strong> that interprets physiological behaviors (blinking patterns, facial symmetry, voice frequency, and typing variance) as stress and focus indices.</li>
+    <li>To automate the assessment of unstructured descriptive answers using <strong>Lexical & Semantic NLP Similarity Algorithms</strong>.</li>
+    <li>To create an <strong>Adaptive Cognitive Training Module</strong> that utilizes the user's stress biofeedback to govern the difficulty curve of questions presented.</li>
+  </ul>
+
+  <h3 class="subsection">1.3 Scope of the Project</h3>
+  <p>The project bounds are strictly within software-based telemetry. It leverages existing hardware available in standard consumer electronics (webcam, microphone, keyboard). The system includes comprehensive user and role management, exam generation, AI-powered proctoring runtime, analytics dashboards, and personalized cognitive training reports.</p>
+
+
+  <!-- ==========================================
+       2. THEORETICAL FRAMEWORK
+       ========================================== -->
+  <h2 id="ch2" class="section-title">2. Theoretical Framework & Core Concepts</h2>
+
+  <p>The foundation of this project is deeply rooted in Applied Mathematics, Computer Vision, Cognitive Psychology, and Natural Language Processing. This section explicitly defines the mathematical and conceptual models implemented in the source code.</p>
+
+  <h3 class="subsection">2.1 Biometric Authentication & Computer Vision</h3>
+  <p>Facial recognition is the cornerstone of the platform’s identity verification. The system utilizes Convolutional Neural Networks (CNN) provided by <code>face-api.js</code> (which wraps TensorFlow.js) to execute mobile-net based face detection.</p>
+  <p><strong>Theoretical Process:</strong></p>
+  <ol>
+    <li><strong>Detection:</strong> The <code>TinyFaceDetector</code> locates the bounding box of the face in the continuous video stream.</li>
+    <li><strong>Landmark Mapping:</strong> The <code>FaceLandmark68Net</code> maps exactly 68 defining topographical coordinates (eyes, nose, jawline, mouth).</li>
+    <li><strong>Feature Extraction:</strong> The <code>FaceRecognitionNet</code> projects these landmarks into a high-dimensional space, outputting a <strong>128-dimensional floating-point array</strong> (Face Descriptor).</li>
+  </ol>
+  <p>To verify a student, we calculate the <strong>Euclidean Distance</strong> between the registered descriptor array (\(p\)) and the live video capture array (\(q\)) in 128-dimensional space:</p>
+  
+  <div class="equation">
+    \( d(p, q) = \sqrt{\sum_{i=1}^{n=128} (q_i - p_i)^2} \)
+  </div>
+  <div class="equation-caption">Formula 2.1: Euclidean Distance for Face Verification</div>
+
+  <p>In our system, a threshold distance of <strong>0.6</strong> is mathematically defined. If \( d(p, q) \le 0.6 \), the faces match (same person). If \( d(p, q) > 0.6 \), authentication is denied. This logic is directly translated in <code>backend/routes/userRoutes.js</code>.</p>
+
+  <h3 class="subsection">2.2 Cognitive Load Theory & Stress Telemetry</h3>
+  <p>Cognitive Load Theory (Sweller, 1988) suggests that working memory has a limited capacity. When cognitive load exceeds capacity (high stress, difficult tasks, or external anxiety like cheating), it manifests physiologically.</p>
+
+  <h4>A. Visual Stress (Eye Aspect Ratio - EAR)</h4>
+  <p>Using the 68 facial landmarks, we isolate the points around the eyes. The Eye Aspect Ratio (Soukupová & Čech, 2016) is a scalar value mapping the openness of the eye. Six coordinates represent the eye: \( p_1, ..., p_6 \).</p>
+  
+  <div class="equation">
+    \( EAR = \frac{\|p_2 - p_6\| + \|p_3 - p_5\|}{2 \|p_1 - p_4\|} \)
+  </div>
+  <div class="equation-caption">Formula 2.2: Eye Aspect Ratio (EAR)</div>
+
+  <p>When the eye closes (blink or drowsiness), the numerator approaches zero. Rapid fluctuations indicate panic, while sustained low EAR indicates drowsiness or distraction. In <code>BehaviorMonitor.js</code>, an EAR below 0.20 adds a massive +40 penalty strictly to the current visual stress metric.</p>
+
+  <h4>B. Acoustic Stress (Frequency & Amplitude Energy)</h4>
+  <p>The human voice exhibits micro-tremors under stress. Using the Web Audio API <code>AnalyserNode</code>, the system computes the Fast Fourier Transform (FFT) of the audio stream. The root mean square (RMS) amplitude or frequency band averages are tracked. High variance or sudden acoustic volume peaks generate acoustic stress spikes in the Cognitive HUD.</p>
+
+  <h4>C. Kinetic Dynamics (Keystroke Variance)</h4>
+  <p>Cognitive hesitation translates directly to keyboard dwell time and flight time. By recording the timestamp difference between <code>keydown</code> events, we calculate the localized variance of typing speed over a rolling 10-key buffer. High variance equals cognitive dissonance (unsure answers, or frantically typing copied text).</p>
+  
+  <div class="equation">
+    \( \sigma^2 = \frac{\sum_{i=1}^{n} (x_i - \mu)^2}{n} \)
+  </div>
+  <div class="equation-caption">Formula 2.3: Variance computation for typing intervals</div>
+
+  <h3 class="subsection">2.3 Natural Language Processing (NLP) in Grading</h3>
+  <p>To automatically grade descriptive (essay) questions, the system must measure how closely a student's unstructured text aligns semantically and lexically with an admin-defined "Reference Answer."</p>
+  <p>The <code>similarity.js</code> utility relies on the <strong>Sørensen–Dice coefficient</strong> applied to character bigrams. For two strings X and Y, the coefficient \( S \) is relative to the intersection of their bigram sets:</p>
+
+  <div class="equation">
+    \( S = \frac{2 |X \cap Y|}{|X| + |Y|} \)
+  </div>
+  <div class="equation-caption">Formula 2.4: Sørensen–Dice Coefficient</div>
+  
+  <p>The coefficient is a value between \(0\) and \(1\). In the <code>examResponseRoutes.js</code>, an NLP similarity threshold of <strong>0.75 (75%)</strong> is considered sufficient to award full correctness marks for a descriptive question automatically.</p>
+
+  <h3 class="subsection">2.4 Integrity Scoring Algorithm Validation</h3>
+  <p>The integrity score represents the probabilistic confidence that an exam was taken honestly. It starts at a basal rate of 100% and degrades based on penalization vectors. The weight (\( W \)) of an event (\( E \)) is proportional to its risk to exam integrity.</p>
+  
+  <div class="equation">
+    \( Score_{integrity} = \max\left(0, \quad 100 - \sum_{i=1}^{k} W_i \cdot C(E_i)\right) \)
+  </div>
+  <div class="equation-caption">Formula 2.5: Weighted Integrity Penalty Model</div>
+
+  <p>According to <code>IntegrityScoreEngine.js</code>, weights are distributed as follows:</p>
+  <ul>
+    <li>Tab Switch: \( W = 8 \)</li>
+    <li>Sustained Stress Spike (>60sec): \( W = 10 \)</li>
+    <li>Copy & Paste Attempt: \( W = 15 \)</li>
+    <li>Face Missing constraint error: \( W = 20 \)</li>
+    <li>Multiple Faces located constraint error: \( W = 25 \)</li>
+  </ul>
+
+  <h3 class="subsection">2.5 Item Response Theory (IRT) in Adaptive Training</h3>
+  <p>The Cognitive Training module differentiates this system from a simple evaluation tool. Using concepts derived from Item Response Theory (specifically Computerized Adaptive Testing - CAT), the sequence of questions is not fixed.</p>
+  <p>If a user answers correctly, the target difficulty \(\theta\) increments to challenge their capability threshold. If they answer incorrectly, \(\theta\) decreases. Uniquely, this project injects Bio-feedback into the IRT calculation. If the user's localized stress level exceeds \( 60\% \), the system forces \(\theta\) down linearly, preventing cognitive burnout and allowing psychological recovery during training.</p>
+
+
+  <!-- ==========================================
+       3. SYSTEM ARCHITECTURE
+       ========================================== -->
+  <h2 id="ch3" class="section-title">3. System Architecture & Design</h2>
+
+  <h3 class="subsection">3.1 Top-Level Architecture Structure</h3>
+  <p>The solution embraces a stateless, decoupled Client-Server architecture utilizing the REST protocol. Data is transmitted purely in formatted JSON payloads. The Edge AI concept is heavily utilized: all facial detection model geometries and inference calculations occur on the Client's hardware (Browser) to ensure data privacy (no webcam feeds exist on servers) and to drastically reduce server overhead.</p>
+
+<div class="figure">
+[ CLIENT NODE: React UI + Browser Storage + MediaDevices API ]
+       │      │       ▲ 
+ [Edge AI]    │ [HTTP POST/GET]
+ (Face-API)   ▼       │
+       [ LOCAL HOST: Express 5 + Node Runtime ]
+         │       ▲              ▲
+   (Mongoose ODM)│              │ [Plagiarism MS Call]
+         ▼       │              ▼
+ [ CLUSTER: MongoDB Node ] [ Python NLP Microservice ]
+</div>
+<div class="figure-caption">Figure 3.1: Topological Request Flow and Component Distribution</div>
+
+  <h3 class="subsection">3.2 Technology Stack Rationale (MERN)</h3>
+  <ul>
+    <li><strong>MongoDB & Mongoose:</strong> Unlike relational SQL data, academic questions, responses, and timeline telemetries vary wildly in structure. MongoDB's BSON structure natively nests arrays of exam questions flawlessly.</li>
+    <li><strong>Express & Node.js:</strong> Because the system requires ingesting high-frequency streams of performance snapshots and integrity events from multiple simultaneous students, Node's event-driven, non-blocking I/O model prevents process locking.</li>
+    <li><strong>React.js:</strong> The UI requires instant feedback (stress bars, countdowns, warning modals). React’s Virtual DOM isolates these hyper-active rendering cycles, ensuring the browser does not freeze under the simultaneous execution of webcam painting and event handling.</li>
+  </ul>
+
+  <!-- ==========================================
+       4. APPLICATION WORKFLOWS
+       ========================================== -->
+  <h2 id="ch4" class="section-title">4. Application Workflows & System Processes</h2>
+
+  <h3 class="subsection">4.1 Authentication Pipeline Workflow</h3>
+  <p>The authentication pipeline operates on a Two-Factor logic (Possession of Credentials + Biometric Inheritance):</p>
+  <ol>
+    <li>The User initiates the login handler passing <code>username</code> and <code>password</code>.</li>
+    <li>The <code>FaceCapture</code> Ref invokes the webcam. The underlying <code>tinyFaceDetector</code> locates the spatial bounding box.</li>
+    <li>The image chunk is normalized and passed to <code>faceRecognitionNet</code>, producing the 128D descriptor array.</li>
+    <li>The Client POSTs the payload to the auth route.</li>
+    <li>The server retrieves the stored descriptor for the username from MongoDB, applies Euclidean Math (Formula 2.1), and conditionally assigns a JSON session token response.</li>
+  </ol>
+
+  <h3 class="subsection">4.2 Automated AI Proctoring Workflow</h3>
+  <p>During an active <code>StartExam.js</code> session, multiple parallel processing threads execute:</p>
+  <ul>
+    <li><strong>Thread A (Security Constraints):</strong> Event listeners are bound to <code>visibilitychange</code>, <code>fullscreenchange</code>, and <code>keydown</code>. If breached, the count increments. At \(N=3\), the system forcefully executes the submit function irrespective of the timer.</li>
+    <li><strong>Thread B (Bio-Feedback Aggregation):</strong> Every 2000ms, the <code>BehaviorMonitor</code> resolves face visibility, EAR calculations, and facial geometry. Every 1000ms, the <code>AnalyserNode</code> calculates FFT arrays for audio.</li>
+    <li><strong>Thread C (Persistence):</strong> Every 4000ms, Thread B's smoothed values are grouped into a "Status Snapshot," injected into a local buffer, and backed up to <code>localStorage</code> (Fail-safe against accidental browser crashes).</li>
+  </ul>
+
+  <h3 class="subsection">4.3 Analytics & Intelligence Generation</h3>
+  <p>Post-submission, the <code>PerformanceAnalyticsEngine</code> digests the arrays of telemetry. It segregates data by the exam's <code>topicTag</code>. The system highlights <em>Cognitive Hotspots</em>—topics or specific questions where the user's focus broke or stress averaged \(>70\%\). It also outputs actionable text heuristics (e.g., "Reduce hesitation by practicing time-boxed drills") based on threshold triggers.</p>
+
+  <!-- ==========================================
+       5. DATABASE SCHEMA
+       ========================================== -->
+  <h2 id="ch5" class="section-title">5. Database Schema & Data Modeling</h2>
+
+  <p>The database relies on MongoDB. Data is heavily denormalized into distinct document collections to reduce lookup joins and improve retrieval speed.</p>
+
+  <div class="callout">
+    <h4>Entity Relationships</h4>
+    <p>A <strong>User</strong> (Student) can have multiple <strong>ExamResponses</strong> and <strong>PerformanceSnapshots</strong>. An <strong>Exam</strong> embeds an array of its own Questions to maintain version consistency forever (if an admin alters an exam later, past responses are judged against the embedded historical question snapshot at submit time).</p>
+  </div>
+
+  <h4 class="file-title">backend/models/usermodel.js</h4>
+<pre class="source-code">
+const mongoose = require('mongoose');
+
+const userSchema = new mongoose.Schema({
+  username: { type: String, required: true, unique: true },
+  password: { type: String, required: true },
+  // 128-D floating point vector required for facial verification topology
+  faceDescriptor: { type: [Number], default: [] },
+  role: { type: String, enum: ['student', 'admin'], default: 'student' }
+});
+
+module.exports = mongoose.model('User', userSchema);
+</pre>
+
+  <h4 class="file-title">backend/models/examModel.js</h4>
+<pre class="source-code">
+const mongoose = require('mongoose');
+
+const questionSchema = new mongoose.Schema({
+  questionText: { type: String, required: true },
+  // Supports varied assessment modalities
+  type: { type: String, enum: ['multiple_choice', 'descriptive'], default: 'multiple_choice' },
+  options: [{ type: String }],
+  correctAnswer: { type: Number },
+  referenceAnswer: { type: String }, // Used as target vector for NLP semantic similarity
+  wordLimit: { type: Number }
+});
+
+const examSchema = new mongoose.Schema({
+  title: { type: String, required: true },
+  duration: { type: Number, required: true },
+  questions: [questionSchema], // Embedded document array
+  createdAt: { type: Date, default: Date.now }
+});
+
+module.exports = mongoose.model('Exam', examSchema);
+</pre>
+
+  <h4 class="file-title">backend/models/examResponseModel.js</h4>
+<pre class="source-code">
+const mongoose = require('mongoose');
+
+const responseSchema = new mongoose.Schema({
+  questionId: { type: String, required: true },
+  answerIndex: { type: Number },
+  descriptiveAnswer: { type: String },
+  similarity: { type: Number },   // Result of Dice Coefficient calc
+  plagiarism: { type: Number }    // Result of micro-service TF-IDF
+});
+
+const examResponseSchema = new mongoose.Schema({
+  examId: { type: mongoose.Schema.Types.ObjectId, ref: 'Exam', required: true },
+  studentId: { type: String, required: true },
+  responses: [responseSchema],
+  
+  // Aggregate Metrics computed server-side
+  score: { type: Number, default: 0 },
+  plagiarismScore: { type: Number, default: 0 },
+  submittedAt: { type: Date, default: Date.now },
+  
+  // Cognitive Telemetry Arrays
+  stressLevel: { type: String, enum: ['Normal', 'High', 'Extreme'], default: 'Normal' },
+  stressTimeline: [{
+    timestamp: { type: Date, default: Date.now },
+    visualScore: { type: Number, default: 0 },
+    voiceScore: { type: Number, default: 0 },
+    typingScore: { type: Number, default: 0 },
+    overallScore: { type: Number, default: 0 }
+  }],
+  stressSummary: { visualAvg: Number, voiceAvg: Number, /*...*/ },
+  
+  // Rule Violations and Output Classifications
+  warningCount: { type: Number, default: 0 },
+  integrityScore: { type: Number, default: 100 },
+  riskLevel: { type: String, enum: ['Low', 'Medium', 'High'], default: 'Low' },
+  performanceScore: { type: Number, default: 0 }
+});
+
+module.exports = mongoose.model('ExamResponse', examResponseSchema);
+</pre>
+
+
+  <!-- ==========================================
+       6. BACKEND IMPLEMENTATION
+       ========================================== -->
+  <h2 id="ch6" class="section-title">6. Backend Implementation & Application Logic</h2>
+  <p>The Node.js backend serves as the orchestration layer, handling secure validations, calculating NLP similarities, and interfacing with MongoDB.</p>
+
+  <h3 class="subsection">6.1 Core Evaluation Logic in Controllers</h3>
+  <p>The most critical code path resides in the <code>/submit</code> route for exams. It loops over student submissions, detects the type, and executes branching logic.</p>
+
+  <div class="file-name">backend/routes/examResponseRoutes.js (Excerpt)</div>
+<pre class="source-code">
+for (const response of responses) {
+  const question = exam.questions.find(q => q._id.toString() === response.questionId);
+  if (!question) continue;
+  
+  totalScore += 1;
+  let processedResponse = { questionId: response.questionId };
+
+  // Boolean logic for MCQ
+  if (question.type === 'multiple_choice') {
+    processedResponse.answerIndex = response.answer;
+    if (Number(response.answer) === Number(question.correctAnswer)) obtainedScore += 1;
+  } 
+  // NLP Logic Pipeline for Descriptive texts
+  else if (question.type === 'descriptive') {
+    processedResponse.descriptiveAnswer = response.answer;
+    if (question.referenceAnswer && response.answer) {
+      
+      // Calculate Lexical Similarity
+      const similarity = await computeSimilarity(question.referenceAnswer, response.answer);
+      if (similarity >= 0.75) obtainedScore += 1;
+      processedResponse.similarity = similarity;
+      
+      // Cross-reference with Plagiarism external cluster
+      const plagiarism = await computePlagiarismScore(response.answer, question.referenceAnswer);
+      processedResponse.plagiarism = plagiarism;
+      descriptivePlagiarismTotal += plagiarism;
+      descriptiveCount++;
+    }
+  }
+  processedResponses.push(processedResponse);
+}
+</pre>
+
+  <h3 class="subsection">6.2 NLP and Similarity Utilities</h3>
+  <div class="file-name">backend/utils/similarity.js</div>
+<pre class="source-code">
+const stringSimilarity = require('string-similarity');
+
+/**
+ * Returns a score [0..1] mapping lexical closeness via Dice's Coefficient.
+ */
+function computeSimilarity(reference, studentAnswer) {
+  const a = String(reference || '');
+  const b = String(studentAnswer || '');
+  return stringSimilarity.compareTwoStrings(a, b);
+}
+module.exports = { computeSimilarity };
+</pre>
+
+
+  <!-- ==========================================
+       7. FRONTEND IMPLEMENTATION
+       ========================================== -->
+  <h2 id="ch7" class="section-title">7. Frontend Implementation & UI Details</h2>
+  <p>The client application is built with React 19, allowing isolated state updates which is imperative for continuous webcam mapping. Libraries like <code>recharts</code> are heavily integrated to visualize SVG representations of complex cognitive loads.</p>
+
+  <h3 class="subsection">7.1 Real-Time Sensing (BehaviorMonitor)</h3>
+  <p>The <code>BehaviorMonitor.js</code> component attaches a <code>MediaDevices</code> continuous stream to an invisible HTML Video tag. An asynchronous loop runs inference over the painted canvas frames.</p>
+  
+  <div class="file-name">Frontend/src/components/BehaviorMonitor.js (Mathematical Logic Excerpt)</div>
+<pre class="source-code">
+// Mapping 68 nodes onto coordinate plane
+const landmarks = detection.landmarks;
+const leftEye = landmarks.getLeftEye();
+
+// Implementation of Formula 2.2 (Eye Aspect Ratio)
+const calculateEAR = (eye) => {
+  const v1 = Math.sqrt(Math.pow(eye[1].x - eye[5].x, 2) + Math.pow(eye[1].y - eye[5].y, 2));
+  const v2 = Math.sqrt(Math.pow(eye[2].x - eye[4].x, 2) + Math.pow(eye[2].y - eye[4].y, 2));
+  const h = Math.sqrt(Math.pow(eye[0].x - eye[3].x, 2) + Math.pow(eye[0].y - eye[3].y, 2));
+  return (v1 + v2) / (2.0 * h);
+};
+
+const avgEAR = (calculateEAR(leftEye) + calculateEAR(landmarks.getRightEye())) / 2;
+
+// Threshold rules for physiological response
+if (avgEAR < 0.2) visualStress += 40;     // Eyes significantly closed / sleepy / panic reading
+else if (avgEAR < 0.25) visualStress += 15;
+</pre>
+
+  <h3 class="subsection">7.2 Intelligence Engines (Client-Side)</h3>
+  <p>Calculations required immediately on the user interface (like HUDs and Analytics graphs) run localized engines. This ensures instant performance independent of network latency.</p>
+  <div class="file-name">Frontend/src/utils/IntegrityScoreEngine.js</div>
+<pre class="source-code">
+export const RISK_WEIGHTS = {
+    TAB_SWITCH: 8,
+    COPY_PASTE: 15,
+    FACE_MISSING: 20,
+    MULTIPLE_FACES: 25,
+    STRESS_SPIKE: 10 // Translates Formula 2.5
+};
+
+export const calculateIntegrityScore = (eventCounts = {}, events = []) => {
+    let penaltyTotal = 0;
+    penaltyTotal += (eventCounts.TAB_SWITCH || 0) * RISK_WEIGHTS.TAB_SWITCH;
+    // ... [applies weighted sum]
+
+    const integrityScore = Math.max(0, 100 - penaltyTotal);
+
+    let riskLevel = "Low";
+    if (integrityScore < 50) riskLevel = "High";
+    else if (integrityScore < 80) riskLevel = "Medium";
+
+    return { integrityScore, riskLevel };
+};
+</pre>
+
+
+  <!-- ==========================================
+       8. SETUP INSTRUCTIONS
+       ========================================== -->
+  <h2 id="ch8" class="section-title">8. Project Setup & Execution Guide</h2>
+  <p>To replicate and deploy this system locally for academic evaluation, the following strict sequence of commands must be executed to bind the databases, install node packages, and launch development servers.</p>
+
+  <h3 class="subsection">Environment Prerequisites</h3>
+  <ul>
+    <li>Node.js Engine (version 18.x or greater requested for Native fetch compatibility)</li>
+    <li>MongoDB Server running locally at <code>localhost:27017</code></li>
+    <li>OS Level access to Webcam and Microphone modules.</li>
+  </ul>
+
+  <h3 class="subsection">Initialization Steps</h3>
+<pre class="source-code">
+# Step 1: Open primary system terminal and launch local MongoDB Damon
+$ mongod
+
+# Step 2: Open a new terminal. Clone or navigate into the backend directory
+$ cd backend
+$ npm install             # Resolves express, mongoose, string-similarity
+$ touch .env              # Add MONGO_URI=mongodb://localhost:27017/exam_portal
+$ node server.js          # Binds server API to designated PORT (Default: 5000)
+
+# Step 3: Open a final terminal for the Client UI
+$ cd Frontend
+$ npm install             # Resolves React, face-api, recharts
+$ npm start               # Launches Webpack Dev Server and opens Browser at localhost:3000
+</pre>
+
+  <p><strong>Critical Verification:</strong> The Deep Learning weight distributions for <code>face-api.js</code> MUST be positioned within the <code>Frontend/public/models/</code> directory structure. Absence of these files will cause a silent rejection in the Promise execution of the <code>videoRef</code> canvas overlay.</p>
+
+
+  <!-- ==========================================
+       9. CONCLUSION
+       ========================================== -->
+  <h2 id="ch9" class="section-title">9. Conclusion & Future Scope</h2>
+  
+  <p>This project successfully demonstrates a highly theoretical yet profoundly practical approach to digital assessments. By transcending standard surveillance schemas and entering the realm of <strong>Cognitive Performance Telemetry</strong>, the platform offers a dual-benefit paradigm: ensuring rigid academic integrity for the institution while providing actionable cognitive behavioral feedback to the student.</p>
+  
+  <p>The successful implementation of Deep Learning (CNN face maps) entirely on the client edge highlights the optimization of modern web browsers to handle intensive matrix algebra, rendering severe backend GPU clusters unnecessary for basic biometric tasks.</p>
+
+  <h3 class="subsection">Future Enhancements</h3>
+  <ol>
+    <li>Integration of advanced NLP <strong>Transformer Models</strong> (such as BERT or Universal Sentence Encoder) array embeddings to completely replace character-based lexical similarity with deep Contextual Awareness grading.</li>
+    <li>Eye-Gaze / Pupil Tracking algorithms to map where on the screen a user is reading, generating a behavioral heatmap of challenging phrase contexts.</li>
+    <li>Expanding the Adaptive Training algorithms using complex Bayesian Networks instead of simple IRT threshold triggers.</li>
+  </ol>
+
+  <!-- ==========================================
+       FOOTER
+       ========================================== -->
+  <div style="margin-top: 80px; padding: 40px 0; text-align: center; border-top: 1px solid var(--border); color: var(--text-muted); font-family: 'Inter', sans-serif;">
+    <p><strong>Department of Computer Science & Engineering</strong></p>
+    <p>Final Year Project Technical Documentation &bull; AI-Based Cognitive Monitoring</p>
+    <p style="margin-top: 20px; font-size: 0.85rem;">Document prepared programmatically via System Architect Agent</p>
+  </div>
+
+</div>
+
+</body>
+</html>
