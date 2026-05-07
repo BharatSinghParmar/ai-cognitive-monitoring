@@ -1,109 +1,114 @@
-# 🧠 AI-Based Cognitive Monitoring
+# 🧠 AI-Based Cognitive Monitoring Platform
 
-An AI-powered online exam proctoring and cognitive analytics platform. Monitors student stress, detects integrity violations, and grades answers using NLP — all in real-time.
+![Vercel](https://img.shields.io/badge/vibe-live-brightgreen)
+![React](https://img.shields.io/badge/frontend-React-blue)
+![Node.js](https://img.shields.io/badge/backend-Node.js-green)
+![MongoDB](https://img.shields.io/badge/database-MongoDB-darkgreen)
+![License](https://img.shields.io/badge/license-MIT-blue)
 
-## ✨ Features
+A state-of-the-art, AI-powered online examination proctoring and cognitive analytics platform. This system leverages multi-modal AI to monitor student behavior, assess cognitive load, and ensure academic integrity in real-time.
 
-- 🎥 **Face Biometrics** — Live face detection using face-api.js (TinyFaceDetector + 68 landmarks)
-- 😰 **Stress Detection** — Visual (EAR), acoustic (FFT), and keystroke dynamics analysis
-- 🛡️ **Proctoring** — Tab-switch detection, copy-paste blocking, fullscreen enforcement
-- 🤖 **AI Grading** — TensorFlow.js Universal Sentence Encoder for semantic similarity scoring
-- 🔍 **Plagiarism Detection** — Python FastAPI microservice + JS string-similarity fallback
-- 📊 **Analytics Dashboards** — Per-student performance, integrity timeline, stress radar
-- 🏋️ **Training Module** — Practice sessions with topic-based question banks
+---
 
-## 🏗️ Tech Stack
+## 🚀 Live Demo
 
-| Layer | Technology |
-|---|---|
-| Frontend | React 19, React Router v7, Recharts |
-| Face AI | face-api.js (TensorFlow.js) |
-| NLP | @tensorflow-models/universal-sentence-encoder |
-| Backend | Node.js, Express 5 |
-| Database | MongoDB Atlas |
-| Plagiarism | Python FastAPI + difflib |
+| Component | Status | URL |
+| :--- | :--- | :--- |
+| **Examination Portal** | 🟢 Live | [Click Here](https://ai-cognitive-ai-cognitive-monitorin.vercel.app) |
+| **Backend API** | 🟢 Live | [Click Here](https://ai-cognitive-monitoring-backend.vercel.app) |
 
-## 🚀 Local Setup
+---
+
+## ✨ Key Features
+
+### 🎥 Multi-Modal AI Proctoring
+- **Face Biometrics**: Real-time face detection and recognition using `face-api.js` (TensorFlow.js).
+- **Behavioral Analysis**: Detects presence, Eye Aspect Ratio (EAR) for fatigue, and head pose for distraction.
+- **Acoustic Monitoring**: Real-time voice frequency and amplitude analysis to detect acoustic anomalies.
+- **Kinetic Dynamics**: Analyzes inter-keystroke intervals to measure typing anxiety and cognitive stress.
+
+### 🤖 Intelligent Grading & Integrity
+- **NLP Grading**: Uses TensorFlow's **Universal Sentence Encoder** for semantic similarity scoring of descriptive answers.
+- **Plagiarism Detection**: High-accuracy comparison against reference answers and peer submissions.
+- **Integrity Score Engine**: A weighted scoring system that tracks tab switches, copy-pasting, and biometric anomalies.
+
+### 📊 Advanced Analytics
+- **Cognitive HUD**: Real-time visual dashboard for students showing their cognitive load.
+- **Performance Radar**: Multi-dimensional analysis of accuracy, productivity, and stress levels.
+- **Admin Dashboard**: Comprehensive overview of all exam sessions with risk-level flags.
+
+---
+
+## 🏗️ Technical Architecture
+
+```mermaid
+graph TD
+    A[React Frontend] -->|REST API| B[Express Backend]
+    B -->|Mongoose| C[(MongoDB Atlas)]
+    A -->|AI Processing| D[face-api.js / TF.js]
+    B -->|Similarity Scoring| E[Universal Sentence Encoder]
+    B -.->|Optional| F[Python Plagiarism Microservice]
+```
+
+---
+
+## 🛠️ Technology Stack
+
+| Layer | Technologies |
+| :--- | :--- |
+| **Frontend** | React 19, Recharts, React Router v7 |
+| **Backend** | Node.js, Express 5, Axios |
+| **AI/ML** | TensorFlow.js, face-api.js, USE |
+| **Database** | MongoDB Atlas, Mongoose |
+| **Deployment** | Vercel (Frontend & Serverless Functions) |
+
+---
+
+## 🚦 Local Setup
 
 ### Prerequisites
 - Node.js 18+
-- MongoDB (local or Atlas)
-- Python 3.9+ (optional, for plagiarism microservice)
+- MongoDB (Local or Atlas)
 
-### 1. Backend
+### 1. Clone & Install
+```bash
+git clone https://github.com/BharatSinghParmar/ai-cognitive-monitoring.git
+cd ai-cognitive-monitoring
+```
+
+### 2. Configure Backend
 ```bash
 cd backend
 cp .env.example .env
-# Edit .env with your MONGO_URI
+# Update .env with your MONGO_URI
 npm install
 npm start
-# Runs on http://localhost:5001
 ```
 
-### 2. Frontend
+### 3. Configure Frontend
 ```bash
 cd Frontend
 cp .env.example .env.local
-# Edit .env.local — set REACT_APP_API_URL=http://localhost:5001
+# Set REACT_APP_API_URL=http://localhost:5001
 npm install
 npm start
-# Runs on http://localhost:3000
 ```
 
-## 🌐 Vercel Deployment
+---
 
-This project is pre-configured for [Vercel](https://vercel.com) with `vercel.json` in both `backend/` and `Frontend/`.
+## 📂 Repository Structure
 
-### Deploy Backend
-1. Go to [vercel.com](https://vercel.com) → **Add New Project**
-2. Import this GitHub repo, set **Root Directory** → `backend`
-3. Add Environment Variables:
-   - `MONGO_URI` → your MongoDB Atlas connection string
-4. Deploy ✅
+- `Frontend/`: The React-based examination portal.
+- `backend/`: The Node.js Express API and AI processing logic.
+- `scripts/`: Utility scripts for database diagnostics and testing.
+- `PROJECT_DOCUMENTATION.html`: Deep-dive technical documentation.
 
-### Deploy Frontend
-1. Go to [vercel.com](https://vercel.com) → **Add New Project**
-2. Import this GitHub repo again, set **Root Directory** → `Frontend`
-3. Add Environment Variables:
-   - `REACT_APP_API_URL` → your deployed backend Vercel URL (e.g. `https://your-backend.vercel.app`)
-4. Deploy ✅
+---
 
-### MongoDB Atlas (Free Database)
-1. Sign up at [mongodb.com/atlas](https://www.mongodb.com/atlas)
-2. Create a **Free M0** cluster
-3. Whitelist all IPs: `0.0.0.0/0`
-4. Copy the connection string → use as `MONGO_URI`
+## 📜 License
 
-## 👤 Roles
+Distributed under the MIT License. See `LICENSE` for more information.
 
-| Role | Access |
-|---|---|
-| **Student** | Register (face scan), take exams, view results, training hub |
-| **Admin** | Create exams, view all responses, manual review, dashboards |
+---
 
-## 📐 Scoring Formula
-
-```
-Final Score = (Accuracy × 60%) + (Productivity × 40%)
-Productivity = 100 - stressPenalty - (warnings × 10)
-```
-
-## 📁 Project Structure
-
-```
-├── backend/
-│   ├── models/              # Mongoose schemas
-│   ├── routes/              # Express API routes
-│   ├── utils/               # NLP similarity + plagiarism helpers
-│   ├── questionBank/        # Training questions
-│   ├── server.js            # Entry point (works local + Vercel serverless)
-│   ├── vercel.json          # Vercel serverless config
-│   └── plagiarism_service.py
-└── Frontend/
-    ├── public/models/       # face-api.js neural network weights
-    ├── vercel.json          # Vercel SPA routing config
-    └── src/
-        ├── components/      # BehaviorMonitor, charts, nav
-        ├── pages/           # 14 page components
-        └── utils/           # IntegrityScoreEngine
-```
+**Developed with ❤️ by Bharat Singh Parmar**
