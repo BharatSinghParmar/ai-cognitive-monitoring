@@ -111,4 +111,10 @@ Distributed under the MIT License. See `LICENSE` for more information.
 
 ---
 
-**Developed with ❤️ by Bharat Singh Parmar**
+**Developed with ❤️ by Bharat Singh Parmar and team :
+Kratika Soni B.Tech(CSE)                              	A20405222206
+Bharat Singh Parmar B.Tech(CSE)                	A20405222117
+Devprakash Singh Rawat B.Tech(CSE)         	A20405222006
+Vishal Jangir B.Tech(CSE)                               	A20405222219
+Lakshay Jangid B.Tech(CSE)                         	A20405222124
+**
